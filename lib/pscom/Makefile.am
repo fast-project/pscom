@@ -33,7 +33,11 @@ noinst_HEADERS = getid.c list.h pscom_con.h pscom_debug.h pscom_env.h	\
 	pscom_shm.h pscom_sock.h pscom_str_util.h pscom_tcp.h		\
 	pscom_types.h pscom_ufd.h pscom_util.h
 
-libpscom_la_LIBADD = -ldl -lmosquitto -lssl -lpthread -lcares
+libpscom_la_LIBADD = -ldl
+
+if MOSQUITTO_ENABLED
+    libpscom_la_LIBADD += -lmosquitto -lssl -lpthread -lcares
+endif
 
 # intermediate libs needed elsewhere, in bin
 libpslib_la_SOURCES = pslib.c pslib.h

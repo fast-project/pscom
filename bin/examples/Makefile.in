@@ -94,6 +94,7 @@ target_triplet = @target@
 DIST_COMMON = $(top_srcdir)/common.am $(srcdir)/Makefile.in \
 	$(srcdir)/Makefile.am $(top_srcdir)/scripts/depcomp
 noinst_PROGRAMS = pscom_dispatch$(EXEEXT)
+@MOSQUITTO_ENABLED_TRUE@am__append_1 = -lmosquitto -lssl -lpthread -lcares
 subdir = bin/examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_check_compile_flag.m4 \
@@ -109,7 +110,8 @@ CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
 am_pscom_dispatch_OBJECTS = pscom_dispatch.$(OBJEXT)
 pscom_dispatch_OBJECTS = $(am_pscom_dispatch_OBJECTS)
-pscom_dispatch_DEPENDENCIES = $(LIBPSCOM)
+am__DEPENDENCIES_1 =
+pscom_dispatch_DEPENDENCIES = $(LIBPSCOM) $(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -230,6 +232,8 @@ MANIFEST_TOOL = @MANIFEST_TOOL@
 MELLANOX_CPPFLAGS = @MELLANOX_CPPFLAGS@
 MELLANOX_LDFLAGS = @MELLANOX_LDFLAGS@
 MKDIR_P = @MKDIR_P@
+MOSQUITTO_CPPFLAGS = @MOSQUITTO_CPPFLAGS@
+MOSQUITTO_LDFLAGS = @MOSQUITTO_LDFLAGS@
 MXM_CPPFLAGS = @MXM_CPPFLAGS@
 MXM_LDFLAGS = @MXM_LDFLAGS@
 NM = @NM@
@@ -351,7 +355,7 @@ configdir = $(prefix)/config
 #
 LIBPSCOM = $(top_builddir)/lib/pscom/libpscom.la
 pscom_dispatch_SOURCES = pscom_dispatch.c
-pscom_dispatch_LDADD = $(LIBPSCOM) -lpopt -lmosquitto -lssl -lpthread -lcares
+pscom_dispatch_LDADD = $(LIBPSCOM) -lpopt $(am__append_1)
 all: all-am
 
 .SUFFIXES:

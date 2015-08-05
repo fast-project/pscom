@@ -18,7 +18,10 @@
 #include <string.h>
 #include <errno.h>
 #include <sys/types.h>
+
+#ifdef MOSQUITTO_ENABLED
 #include <mosquitto.h>
+#endif
 
 int pscom_migration_init(void);
 int pscom_migration_cleanup(void);

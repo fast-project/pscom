@@ -15,4 +15,7 @@ LIBPSCOM = $(top_builddir)/lib/pscom/libpscom.la
 
 noinst_PROGRAMS = pscom_dispatch
 pscom_dispatch_SOURCES = pscom_dispatch.c
-pscom_dispatch_LDADD = $(LIBPSCOM) -lpopt -lmosquitto -lssl -lpthread -lcares
+pscom_dispatch_LDADD = $(LIBPSCOM) -lpopt
+if MOSQUITTO_ENABLED
+    pscom_dispatch_LDADD += -lmosquitto -lssl -lpthread -lcares
+endif

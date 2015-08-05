@@ -95,6 +95,7 @@ target_triplet = @target@
 DIST_COMMON = $(top_srcdir)/common.am $(srcdir)/Makefile.in \
 	$(srcdir)/Makefile.am $(top_srcdir)/scripts/depcomp \
 	$(noinst_HEADERS)
+@MOSQUITTO_ENABLED_TRUE@am__append_1 = -lmosquitto -lssl -lpthread -lcares
 subdir = lib/pscom
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_check_compile_flag.m4 \
@@ -143,7 +144,8 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-libpscom_la_DEPENDENCIES =
+am__DEPENDENCIES_1 =
+libpscom_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am_libpscom_la_OBJECTS = pscom.lo pscom_con.lo pscom_debug.lo \
 	pscom_dprint.lo pscom_env.lo pscom_group.lo \
 	pscom_group_bcast.lo pscom_io.lo pscom_listener.lo \
@@ -294,6 +296,8 @@ MANIFEST_TOOL = @MANIFEST_TOOL@
 MELLANOX_CPPFLAGS = @MELLANOX_CPPFLAGS@
 MELLANOX_LDFLAGS = @MELLANOX_LDFLAGS@
 MKDIR_P = @MKDIR_P@
+MOSQUITTO_CPPFLAGS = @MOSQUITTO_CPPFLAGS@
+MOSQUITTO_LDFLAGS = @MOSQUITTO_LDFLAGS@
 MXM_CPPFLAGS = @MXM_CPPFLAGS@
 MXM_LDFLAGS = @MXM_LDFLAGS@
 NM = @NM@
@@ -419,7 +423,7 @@ noinst_HEADERS = getid.c list.h pscom_con.h pscom_debug.h pscom_env.h	\
 	pscom_shm.h pscom_sock.h pscom_str_util.h pscom_tcp.h		\
 	pscom_types.h pscom_ufd.h pscom_util.h
 
-libpscom_la_LIBADD = -ldl -lmosquitto -lssl -lpthread -lcares
+libpscom_la_LIBADD = -ldl $(am__append_1)
 
 # intermediate libs needed elsewhere, in bin
 libpslib_la_SOURCES = pslib.c pslib.h
