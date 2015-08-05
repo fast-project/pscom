@@ -19,7 +19,7 @@
 #include <errno.h>
 #include <sys/types.h>
 
-#ifdef MOSQUITTO_ENABLED
+#ifdef PSCOM_MOSQUITTO_ENABLED
 #include <mosquitto.h>
 #endif
 

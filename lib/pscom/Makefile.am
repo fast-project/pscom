@@ -37,6 +37,7 @@ libpscom_la_LIBADD = -ldl
 
 if MOSQUITTO_ENABLED
     libpscom_la_LIBADD += -lmosquitto -lssl -lpthread -lcares
+    AM_CPPFLAGS += -DPSCOM_MOSQUITTO_ENABLED
 endif
 
 # intermediate libs needed elsewhere, in bin

@@ -10,7 +10,7 @@
  * Author:	Simon Pickartz <spickartz@eonerc.rwth-aachen.de>
  */
 
-#ifdef MOSQUITTO_ENABLED
+#ifdef PSCOM_MOSQUITTO_ENABLED
 
 #include "pscom_migrate.h"
 #include "pscom_con.h"
@@ -24,7 +24,6 @@
 #include <stdlib.h>
 #include <netinet/tcp.h>
 #include <errno.h>
-
 
 #define PSCOM_MOSQUITTO_CLIENT_NAME_LENGTH 	50	
 #define PSCOM_MOSQUITTO_TOPIC_LENGTH 		50	

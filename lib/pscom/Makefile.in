@@ -96,6 +96,7 @@ DIST_COMMON = $(top_srcdir)/common.am $(srcdir)/Makefile.in \
 	$(srcdir)/Makefile.am $(top_srcdir)/scripts/depcomp \
 	$(noinst_HEADERS)
 @MOSQUITTO_ENABLED_TRUE@am__append_1 = -lmosquitto -lssl -lpthread -lcares
+@MOSQUITTO_ENABLED_TRUE@am__append_2 = -DPSCOM_MOSQUITTO_ENABLED
 subdir = lib/pscom
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_check_compile_flag.m4 \
@@ -383,7 +384,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -I$(top_srcdir)/include -DLIBDIR=\"$(libdir)\" \
-	-I$(top_builddir)/include
+	-I$(top_builddir)/include $(am__append_2)
 VC_VERSION = $(shell ${top_srcdir}/scripts/vcversion -r $(top_srcdir) -n)
 sed_verbose = $(sed_verbose_$(V))
 sed_verbose_ = $(sed_verbose_$(AM_DEFAULT_VERBOSITY))
